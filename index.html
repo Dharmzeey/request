@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Please wait...</p><!--Click the button to get your coordinates:</p>-->
+
+<!--<button onclick="getLocation()">Try It</button> -->
+
+<script>
+var x = document.getElementById("demo");
+setTimeout(getLocation, 5000)
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            // Success function
+            showPosition, 
+            // Error function
+            null, 
+            // Options. See MDN for details.
+            {
+               enableHighAccuracy: true,
+               timeout: 5000,
+               maximumAge: 0
+            });
+    } else { 
+        x.innerHTML = "Ouch Ehyah";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML="A*10010" + position.coords.latitude + 
+    "1100<br>O*10010" + position.coords.longitude + "1100 <br> C*111054.56544211000";  
+}
+</script>
+
+</body>
+</html>
